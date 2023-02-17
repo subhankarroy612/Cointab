@@ -1,0 +1,13 @@
+#home{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home_container{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
