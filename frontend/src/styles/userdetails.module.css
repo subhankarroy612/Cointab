@@ -4,8 +4,16 @@
 }
 
 #user_table{
-
     width: 80vw;
     margin: auto;
-
 }
+
+#functionalities{
+    width: 80vw;
+    margin: auto;
+    display: flex; 
+    justify-content: space-between;
+    margin-bottom: 5vh;
+    align-items: center;
+}
+
