@@ -53,6 +53,7 @@ export default function UserDetails() {
 
   const handleGender = async (v, page = 1) => {
     setGender(v)
+    setPage(1)
     let res = await axios(url + '/fetchUsers/userdetails?page=' + page + '&filter=' + v);
     setData(res.data)
   }
@@ -82,7 +83,7 @@ export default function UserDetails() {
 
           <Text as={'i'} fontSize={'2xl'}>Page: {page}</Text>
 
-          <Button isDisabled={Math.ceil(data.length / page) - 1 <= 1} bg={'teal'} onClick={() => handlePage(1)}>
+          <Button isDisabled={Math.ceil(data.length / 2) - 1 <= 1} bg={'teal'} onClick={() => handlePage(1)}>
             <RxThickArrowRight color='white' fontSize={'40px'} />
           </Button>
         </Flex>

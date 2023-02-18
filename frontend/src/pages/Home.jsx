@@ -72,6 +72,7 @@ export default function Home() {
 
       <video id={styles.homeVideo} src={bgcVideo} autoPlay loop muted />
 
+
       <section>
         <Modal
           isCentered
@@ -127,6 +128,7 @@ export default function Home() {
         </Button>
 
       </div>
+
 
     </div>
   )

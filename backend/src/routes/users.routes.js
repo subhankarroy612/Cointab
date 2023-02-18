@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const userModel = require('../models/user.model');
+const axios = require('axios')
 
 
 const app = Router();
@@ -25,10 +26,8 @@ app.get('/userdetails', async (req, res) => {
 app.get('/', async (req, res) => {
 
     try {
-        let r = await fetch('https://randomuser.me/api/?results=50')
-            .then((r) => r.json()).catch((e) => console.log(e.message))
-        r = r.results
-        await userModel.insertMany(r)
+        let r = await axios('https://randomuser.me/api/?results=50')
+        await userModel.insertMany(r.data.results)
         res.status(201).send('Data saved successfully!')
     } catch (e) {
         return res.status(501).send(e.message)
