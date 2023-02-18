@@ -1,19 +1,26 @@
-#userdetails{
+#userdetails {
     min-height: 100vh;
-    margin-top: 20vh;
 }
 
-#user_table{
+.user_table {
     width: 80vw;
     margin: auto;
-}
-
-#functionalities{
-    width: 80vw;
-    margin: auto;
-    display: flex; 
-    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
     margin-bottom: 5vh;
-    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+#functionalities {
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.backBtn:hover {
+    right: 20px;
+}

@@ -6,12 +6,11 @@ const app = Router();
 
 
 app.get('/userdetails', async (req, res) => {
-
     const { page = 1, filter = '', limit = 10 } = req.query
     try {
 
         const users = await userModel.aggregate([
-            { $match: filter ? { gender: filter } : {} },
+            { $match: filter ? { 'gender': filter } : {} },
             { $skip: +(limit * (+page - 1)) },
             { $limit: +limit }
         ])
@@ -21,7 +20,6 @@ app.get('/userdetails', async (req, res) => {
     } catch (e) {
         return res.status(501).send(e.message)
     }
-
 })
 
 app.get('/', async (req, res) => {

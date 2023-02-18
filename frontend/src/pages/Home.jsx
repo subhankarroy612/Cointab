@@ -7,15 +7,16 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   useDisclosure,
   useToast
 } from '@chakra-ui/react';
-
 import React, { useState } from 'react';
 import styles from '../styles/home.module.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { url } from '../components/url';
+import bgcVideo from '../assets/bgcVideo.mp4'
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -55,7 +56,7 @@ export default function Home() {
     setLoadingDelete(true)
 
     onClose()
-    await axios.delete(url+'/fetchUsers').then(()=>{
+    await axios.delete(url + '/fetchUsers').then(() => {
       toast({
         position: 'top',
         title: 'Data deleted successfully.',
@@ -63,11 +64,13 @@ export default function Home() {
         duration: 5000,
         isClosable: true,
       })
-    }).finally(()=>setLoadingDelete(false))
+    }).finally(() => setLoadingDelete(false))
   }
 
   return (
     <div id={styles.home}>
+
+      <video id={styles.homeVideo} src={bgcVideo} autoPlay loop muted />
 
       <section>
         <Modal
@@ -84,7 +87,7 @@ export default function Home() {
               Clicking on Delete will erase all the data. Are you sure ?
             </ModalBody>
             <ModalFooter>
-              <Button variant='ghost'  mr={3} onClick={onClose}>
+              <Button variant='ghost' mr={3} onClick={onClose}>
                 Close
               </Button>
               <Button onClick={deleteUsers} bg={'red'} color='white'>DELETE</Button>
@@ -94,9 +97,35 @@ export default function Home() {
       </section>
 
       <div id={styles.home_container}>
-        <Button isLoading={loading} loadingText={'Submitting'} onClick={fetchUsers}>Fetch Users</Button>
-        <Button isLoading={loadingDelete} loadingText={'Deleting'} bg={'red'} color={'white'} onClick={onOpen}>Delete Users</Button>
-        <Button onClick={() => { navigate('/userDetails') }}>User Details</Button>
+
+        <Text color={'white'}>Click on Fetch Users to fetch 50 data</Text>
+        <Button
+          isLoading={loading}
+          loadingText={'Submitting'}
+          onClick={fetchUsers}
+        >
+          Fetch Users
+        </Button>
+
+        <Text color={'red'}>Click on Delete Users to delete entire data</Text>
+        <Button
+          isLoading={loadingDelete}
+          loadingText={'Deleting'}
+          bg={'red'}
+          color={'white'} onClick={onOpen}
+        >
+          Delete Users
+        </Button>
+
+        <Text color={'teal'}>Click on User Details to check details</Text>
+        <Button
+          bg={'teal'}
+          color={'white'}
+          onClick={() => { navigate('/userDetails') }}
+        >
+          User Details
+        </Button>
+
       </div>
 
     </div>
